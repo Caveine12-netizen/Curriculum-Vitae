@@ -1,4 +1,4 @@
-const API_KEY = "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"; // Ganti dengan API key Anda
+const API_KEY = "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"; // Ganti dengan API key Anda
 const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
