@@ -24,19 +24,19 @@
             z-index: -1;
         }
 
-        /* Konten di atas video */
+        /* Konten utama */
         .content {
             position: relative;
             z-index: 1;
             color: white;
             text-align: center;
-            background: rgba(0, 0, 0, 0.6); /* Transparan agar teks mudah dibaca */
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
         }
 
-        /* Tampilan body */
+        /* Tata letak */
         body {
             display: flex;
             flex-direction: column;
@@ -45,32 +45,38 @@
             height: 100vh;
             background: rgba(0, 0, 0, 0.5);
             text-align: center;
-        }
-
-        /* Gaya untuk teks */
-        h1 {
-            margin-bottom: 15px;
+            overflow-x: hidden;
         }
 
         /* Foto Profil */
-        img.profile-picture {
-            display: block;
-            margin: auto;
+        .profile-pic {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             margin-bottom: 15px;
         }
 
-        p {
-            margin: 5px 0;
+        /* Tombol Video Controls */
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        b, u {
-            font-size: 18px;
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
         }
 
         /* Footer */
@@ -87,91 +93,73 @@
             font-style: italic;
         }
 
-        /* Tombol Suara */
-        .sound-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
         /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
-            left: -250px; /* Tersembunyi di awal */
+            left: -250px;
             width: 250px;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 20px;
-            transition: left 0.3s ease;
+            transition: 0.3s;
             overflow-y: auto;
         }
 
-        /* Tombol Menu */
-        .menu-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 1000;
-            font-size: 18px;
+        .sidebar.open {
+            left: 0;
         }
 
-        /* Gaya untuk gambar meme */
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
         .sidebar img {
             width: 100%;
             border-radius: 10px;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
 
 <!-- Video Background -->
-<video autoplay loop class="video-background" id="backgroundVideo">
+<video autoplay loop muted playsinline class="video-background" id="backgroundVideo">
     <source src="https://qu.ax/PbolG.mp4" type="video/mp4">
     Browser kamu tidak mendukung video.
 </video>
 
-<!-- Tombol Menu -->
-<button class="menu-button" onclick="toggleSidebar()">☰ Menu</button>
-
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-    <h2>Meme & Hobby</h2>
-
-    <!-- Meme -->
-    <h3>Meme Favorit</h3>
-    <img src="https://i.imgflip.com/5z5s3t.jpg" alt="Meme Lucu">
-
-    <!-- Hobi -->
-    <h3>Hobi Saya</h3>
-    <ul>
-        <li>🔥 Bermain Game</li>
-        <li>📖 Membaca Buku</li>
-        <li>💻 Coding</li>
-        <li>🎵 Mendengarkan Musik</li>
-    </ul>
+    <h2>Hobi & Meme</h2>
+    <p>⚽ Bermain Sepak Bola</p>
+    <p>🎮 Main Game</p>
+    <p>📖 Baca Buku</p>
+    <img src="https://i.imgflip.com/3fvm6l.jpg" alt="Meme">
 </div>
+
+<!-- Tombol buka sidebar -->
+<button class="menu-button" onclick="toggleSidebar()">☰</button>
 
 <!-- Konten CV -->
 <div class="content">
     <h1>CV</h1>
-    <img src="https://qu.ax/RDtvU.jpeg" alt="Foto Profil" class="profile-picture">
+    <img src="https://qu.ax/RDtvU.jpeg" alt="Foto Profil" class="profile-pic">
 
     <p><b><u>Data Diri :</u></b></p>
     <p>Nama : Hisyam</p>
@@ -188,10 +176,13 @@
     <p>OSIS</p>
     <p>Karang Taruna</p>
     <p>PMR</p>
-</div>
 
-<!-- Tombol Suara -->
-<button class="sound-button" onclick="toggleSound()">🔊</button>
+    <!-- Tombol Kontrol Video -->
+    <div class="video-controls">
+        <button class="btn" onclick="togglePlay()">⏯ Play/Pause</button>
+        <button class="btn" onclick="toggleMute()">🔊 Mute/Unmute</button>
+    </div>
+</div>
 
 <!-- Footer -->
 <div class="footer">
@@ -200,30 +191,34 @@
     - Hisyam AK -
 </div>
 
+<!-- JavaScript -->
 <script>
-    function toggleSidebar() {
-        let sidebar = document.getElementById("sidebar");
-        sidebar.style.left = (sidebar.style.left === "0px") ? "-250px" : "0px";
+    let video = document.getElementById("backgroundVideo");
+
+    // Play/Pause Video
+    function togglePlay() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
     }
 
-    function toggleSound() {
-        let video = document.getElementById("backgroundVideo");
+    // Mute/Unmute Video
+    function toggleMute() {
         video.muted = !video.muted;
     }
 
-    // Geser ke kiri untuk membuka sidebar
-    let startX;
-    document.addEventListener("touchstart", function(e) {
-        startX = e.touches[0].clientX;
-    });
-
-    document.addEventListener("touchend", function(e) {
-        let endX = e.changedTouches[0].clientX;
-        if (startX - endX > 50) { // Jika geser ke kiri
-            document.getElementById("sidebar").style.left = "0px";
+    // Toggle Sidebar
+    function toggleSidebar() {
+        let sidebar = document.getElementById("sidebar");
+        if (sidebar.classList.contains("open")) {
+            sidebar.classList.remove("open");
+        } else {
+            sidebar.classList.add("open");
         }
-    });
+    }
 </script>
 
 </body>
-</html>
+    </html>
