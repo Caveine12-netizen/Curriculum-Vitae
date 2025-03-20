@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Hisyam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* Reset CSS */
         * {
@@ -30,7 +31,7 @@
             z-index: 1;
             color: white;
             text-align: center;
-            background: rgba(0, 0, 0, 0.6); /* Lapisan transparan agar lebih terbaca */
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
@@ -84,19 +85,25 @@
 
         /* Tombol Play Video */
         .play-button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            font-size: 16px;
-            background: #007bff;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             cursor: pointer;
             transition: 0.3s;
         }
 
         .play-button:hover {
-            background: #0056b3;
+            background: rgba(0, 0, 0, 0.9);
         }
 
     </style>
@@ -129,10 +136,12 @@
     <p>OSIS</p>
     <p>Karang Taruna</p>
     <p>PMR</p>
-
-    <!-- Tombol Play Video -->
-    <button class="play-button" onclick="document.querySelector('.video-background').play()">Play Video</button>
 </div>
+
+<!-- Tombol Play Video -->
+<button class="play-button" onclick="document.querySelector('.video-background').play()">
+    <i class="fas fa-play"></i>
+</button>
 
 <!-- Footer -->
 <div class="footer">
