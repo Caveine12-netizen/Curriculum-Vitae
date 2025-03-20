@@ -15,17 +15,73 @@
         }
 
         /* Video Background */
-        .video-background {
+        .video-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            overflow: hidden;
             z-index: -1;
         }
 
-        /* Konten di atas video */
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding-top: 60px;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Tombol Open Sidebar */
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            z-index: 1001;
+        }
+
+        /* Konten CV */
         .content {
             position: relative;
             z-index: 1;
@@ -37,36 +93,15 @@
             max-width: 600px;
         }
 
-        /* Tambahan untuk memastikan konten terlihat */
+        /* Body agar tetap di tengah */
         body {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
+            margin: 0;
             text-align: center;
-        }
-
-        /* Gaya untuk teks */
-        h1 {
-            margin-bottom: 15px;
-        }
-
-        img {
-            display: block;
-            margin: auto;
-            width: 150px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        p {
-            margin: 5px 0;
-        }
-
-        b, u {
-            font-size: 18px;
         }
 
         /* Footer */
@@ -105,16 +140,30 @@
         .play-button:hover {
             background: rgba(0, 0, 0, 0.9);
         }
-
     </style>
 </head>
 <body>
 
 <!-- Video Background -->
-<video autoplay loop class="video-background">
-    <source src="https://qu.ax/PbolG.mp4" type="video/mp4">
-    Browser kamu tidak mendukung video.
-</video>
+<div class="video-container">
+    <video autoplay loop muted>
+        <source src="https://qu.ax/PbolG.mp4" type="video/mp4">
+        Browser kamu tidak mendukung video.
+    </video>
+</div>
+
+<!-- Tombol Menu -->
+<div class="menu-btn" onclick="openMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+
+<!-- Sidebar Menu -->
+<div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="#">Home</a>
+    <a href="#">Tentang</a>
+    <a href="#">Kontak</a>
+</div>
 
 <!-- Konten CV -->
 <div class="content">
@@ -139,7 +188,7 @@
 </div>
 
 <!-- Tombol Play Video -->
-<button class="play-button" onclick="document.querySelector('.video-background').play()">
+<button class="play-button" onclick="document.querySelector('.video-container video').play()">
     <i class="fas fa-play"></i>
 </button>
 
@@ -149,6 +198,43 @@
     Jangan asal comot, bikin ginian gak gampang! <br>
     - Hisyam AK -
 </div>
+
+<script>
+    // Fungsi membuka menu
+    function openMenu() {
+        document.getElementById("sidebar").style.left = "0";
+    }
+
+    // Fungsi menutup menu
+    function closeMenu() {
+        document.getElementById("sidebar").style.left = "-250px";
+    }
+
+    // Menutup menu jika klik di luar
+    document.addEventListener("click", function(event) {
+        let sidebar = document.getElementById("sidebar");
+        let menuBtn = document.querySelector(".menu-btn");
+
+        if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+            closeMenu();
+        }
+    });
+
+    // Menutup menu dengan swipe ke kiri
+    let startX;
+    document.addEventListener("touchstart", function(e) {
+        startX = e.touches[0].clientX;
+    });
+
+    document.addEventListener("touchend", function(e) {
+        let endX = e.changedTouches[0].clientX;
+        if (startX > endX + 50) {
+            openMenu(); // Geser ke kiri buka menu
+        } else if (endX > startX + 50) {
+            closeMenu(); // Geser ke kanan tutup menu
+        }
+    });
+</script>
 
 </body>
 </html>
