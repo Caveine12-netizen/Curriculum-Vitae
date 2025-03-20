@@ -39,6 +39,7 @@
         /* Tambahan untuk memastikan konten terlihat */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -66,10 +67,39 @@
         b, u {
             font-size: 18px;
         }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Tombol Play Video */
+        .play-button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-button:hover {
+            background: #0056b3;
+        }
+
     </style>
 </head>
 <body>
 
+<!-- Video Background -->
 <video autoplay loop class="video-background">
     <source src="https://qu.ax/PbolG.mp4" type="video/mp4">
     Browser kamu tidak mendukung video.
@@ -95,11 +125,17 @@
     <p>OSIS</p>
     <p>Karang Taruna</p>
     <p>PMR</p>
+
+    <!-- Tombol Play Video -->
+    <button class="play-button" onclick="document.querySelector('.video-background').play()">Play Video</button>
+</div>
+
+<!-- Footer -->
 <div class="footer">
-            &copy; 2025 Hisyam. All Rights Reserved.
-Jangan asal comot karna bikin ginian gak gampang
--Hisyam AK-
+    &copy; 2025 Hisyam. All Rights Reserved.<br>
+    Jangan asal comot karna bikin ginian gak gampang<br>
+    -Hisyam AK-
 </div>
 
 </body>
-</html>
+    </html>
