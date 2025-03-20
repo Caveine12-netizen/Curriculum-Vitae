@@ -1,17 +1,105 @@
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CV Hisyam</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Konten di atas video */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6); /* Lapisan transparan agar lebih terbaca */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        /* Tambahan untuk memastikan konten terlihat */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Gaya untuk teks */
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        b, u {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box" id="chat-box"></div>
-        <textarea id="user-input" placeholder="Type your message..."></textarea>
-        <button id="send-btn">Send</button>
-    </div>
-    <script src="chatbot.js"></script>
+
+<video autoplay loop class="video-background">
+    <source src="https://qu.ax/PbolG.mp4" type="video/mp4">
+    Browser kamu tidak mendukung video.
+</video>
+
+<!-- Konten CV -->
+<div class="content">
+    <h1>CV</h1>
+    <img src="https://qu.ax/RDtvU.jpeg" alt="Gambar">
+
+    <p><b><u>Data Diri :</u></b></p>
+    <p>Nama : Hisyam</p>
+    <p>Alamat : Ngadisari</p>
+    <p>No HP : 087835084445</p>
+    <p>Email : hisyamak4@gmail.com</p>
+
+    <p><b><u>Jenjang Sekolah :</u></b></p>
+    <p>SDN</p>
+    <p>SMPN</p>
+    <p>SMK</p>
+
+    <p><b><u>Pengalaman Organisasi :</u></b></p>
+    <p>OSIS</p>
+    <p>Karang Taruna</p>
+    <p>PMR</p>
+<div class="footer">
+            &copy; 2025 Hisyam. All Rights Reserved.
+Jangan asal comot karna bikin ginian gak gampang
+-Hisyam AK-
+</div>
+
 </body>
 </html>
