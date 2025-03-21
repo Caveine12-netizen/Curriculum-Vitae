@@ -131,6 +131,11 @@
     <p>OSIS</p>
     <p>Karang Taruna</p>
     <p>PMR</p>
+
+    <!-- Tombol Kontrol Video -->
+<div class="video-controls">
+    <button class="btn" onclick="togglePlay()" id="playPauseButton">▶️</button>
+</div>
 </div>
 
 <!-- Footer -->
@@ -140,24 +145,23 @@
     - Hisyam AK -
 </div>
 
-<!-- JavaScript -->
+!-- JavaScript -->
 <script>
     let video = document.getElementById("backgroundVideo");
-    let playPauseIcon = document.getElementById("playPauseIcon");
+    let playPauseButton = document.getElementById("playPauseButton");
 
     // Play/Pause Video
     function togglePlay() {
         if (video.paused) {
             video.play();
-            playPauseIcon.classList.remove("fa-play");
-            playPauseIcon.classList.add("fa-pause");
+            playPauseButton.innerHTML = "⏸"; // Ganti ke ikon pause
         } else {
             video.pause();
-            playPauseIcon.classList.remove("fa-pause");
-            playPauseIcon.classList.add("fa-play");
+            playPauseButton.innerHTML = "▶️"; // Ganti ke ikon play
         }
     }
 </script>
+
 
 </body>
 </html>
