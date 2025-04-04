@@ -150,15 +150,17 @@
     let video = document.getElementById("backgroundVideo");
     let playPauseButton = document.getElementById("playPauseButton");
 
-    // Play/Pause Video
-    function togglePlay() {
-        if (video.paused) {
-            video.play();
-            playPauseButton.innerHTML = "⏸"; // Ganti ke ikon pause
-        } else {
-            video.pause();
-            playPauseButton.innerHTML = "▶️"; // Ganti ke ikon play
-        }
+    // Play/Pause Video dengan ikon gambar
+function togglePlay() {
+    if (video.paused) {
+        video.play();
+        playPauseButton.src = "https://cdn-icons-png.flaticon.com/512/727/727243.png"; // Ganti ke ikon pause
+        playPauseButton.alt = "Pause";
+    } else {
+        video.pause();
+        playPauseButton.src = "https://cdn-icons-png.flaticon.com/512/727/727245.png"; // Ganti ke ikon play
+        playPauseButton.alt = "Play";
+    }
     }
 </script>
 
